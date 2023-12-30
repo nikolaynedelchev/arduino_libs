@@ -390,6 +390,8 @@ void GSMDriver::StringParser(String& gsmInput)
 		ParseNewSms(gsmInput);
 		return;
 	}
+	DBG_F_PRINT("Unknown gsm input: ");
+	DBG_PRINTLN(gsmInput);
 }
 
 /////////////////////////////////////////////////////////////////
@@ -433,6 +435,7 @@ void GSMDriver::ParseNewSms(String& gsmInput)
 		m_newSms = true;
 		m_senderNumber = astd::move(msgSender);
 		m_msgBody = astd::move(msgBody);
+		DBG_F_PRINTLN("GSM Driver: New msg received");
 	}
 	else
 	{
